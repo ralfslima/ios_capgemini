@@ -53,7 +53,3 @@ O programa da formação está dividido de forma cronológica e incremental, cob
 Caso tenha dúvidas sobre o conteúdo, sugestões ou queira trocar uma ideia sobre os projetos desenvolvidos, fique à vontade para entrar em contato:
 
 * 📧 **E-mail:** [contato@ralflima.com](mailto:contato@ralflima.com)
-
----
-
-<p align="center">Desenvolvido com 💙 durante a Formação iOS do instrutor Ralf Lima.</p>
