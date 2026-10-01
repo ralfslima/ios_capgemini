@@ -1,0 +1,247 @@
+// ??  <- Operador de coalescência.
+// !   <- Desembrulho forçado.
+
+
+
+// Variáveis e Constantes
+/*var nome = "Ralf"
+var idade: Int = 36
+var nome: String = "Ralf"
+print(type(of: nome))*/
+
+/*let pi = 3.14*/
+
+// Informações nulas (nil)
+/*var cargo: String?
+print(cargo ?? "Cargo não informado.")*/
+
+/*
+    REGRAS PARA CRIAR VARIÁVEIS E CONSTANTES
+    1. Não começar com números.
+    2. Não possuir espaçamento.
+    3. Não utilizar operadores matemáticos (+, -, *, /).
+    4. Não utilizar pontos e vírgulas.
+ */
+
+
+
+// INTERAÇÃO COM O USUÁRIO E CONCATENAÇÃO
+/*print("Olá! Qual é o seu nome?")
+var nome = readLine()
+print("Seja bem-vindo " + nome!)
+print("Seja bem-vindo \(nome!)")*/
+
+
+
+// CONVERTER DADOS
+// Conversão de Tipo
+/*var numero1 = 5
+var numero2: Double = Double(numero1)
+var numero3 = "6"
+var numero4: Int = Int(numero3) ?? 0*/
+
+// Cast
+/*var desconhecida: Any = "Ralf"
+
+if let tipoString = desconhecida as? String {
+    print("A variável é do tipo String e seu valor é \(tipoString)")
+} else if let tipoInt = desconhecida as? Int {
+    print("A variável é do tipo Int e seu valor é \(tipoInt)")
+} else if let tipoDouble = desconhecida as? Double {
+    print("A variável é do tipo Double e seu valor é \(tipoDouble)")
+}else if let tipoBool = desconhecida as? Bool {
+    print("A variável é do tipo Bool e seu valor é \(tipoBool)")
+} else {
+    print("Tipo desconhecido.")
+}*/
+
+
+
+/*
+    OPERADORES
+    Lógicos: && (E)    || (OU)     ! (NEGAÇÃO)
+    Aritméticos: +, -, *, /, %
+    Relacionais: >, >=, <, <=, ==, !=
+*/
+
+
+
+// Condicionais - Simples, Encadeada, Aninhada e Operador ternário
+// Simples
+/*var idade = 19
+if idade >= 18 {
+    print("Maior de idade")
+} else {
+    print("Menor de idade")
+}*/
+
+// Encadeada
+/*var media = 8.5
+if media >= 7 {
+    print("Aprovado(a)")
+} else if media >= 5 {
+    print("Em exame")
+} else {
+    print("Reprovado(a)")
+}*/
+
+// Aninhada
+/*var media = 7.8
+var faltas = 9
+
+if faltas >= 10 {
+    print("Aluno(a) reprovado(a) por faltas!")
+} else {
+    if media >= 7 {
+        print("Aprovado(a)!")
+    } else {
+        print("Reprovado(a) por média!")
+    }
+}*/
+
+// Operador ternário
+/*var numero1 = 8, numero2 = 9
+var resultado = numero1 == numero2 ? numero1+numero2 : numero1*numero2
+print(resultado)*/
+
+
+// Estrutura de escolha
+/*let linguagem = "HTML"
+ 
+ switch linguagem {
+     case "HTML":
+     print("Linguagem de marcação")
+     
+     case "CSS":
+     print("Linguagem de estilos")
+     
+     case "JavaScript":
+     print("Linguagem de programação")
+     
+     case "Swift":
+     print("Linguagem de programação criada pela Apple ❤️")
+     
+     default:
+     print("Linguagem desconhecida")
+ }*/
+
+
+
+// Array (vetor)
+/*var nomes = ["Ralf", "Aline", "Henrique", "Viviane"]
+ nomes.append("Fernanda")  // <- Cadastrar um novo nome
+ nomes[4] = "Gabriela"     // <- Alterar um registro
+ nomes.remove(at: 1)       // <- Remover um nome em uma posição
+ print(nomes)              // <- Listar todos os nomes
+ print(nomes[0])           // <- Listar um nome através de uma posição*/
+
+
+
+// Laços de repetição - While, Repeat, For e ForEach
+/*var indice = 1
+
+while indice <= 5 {
+    print(indice)
+    indice += 1
+    //indice = indice + 1
+}
+  
+repeat {
+    print(indice)
+    indice += 1
+} while indice <= 5
+
+// To      -> Número indicado -1
+// Through -> Número indicado
+for indice in stride(from: 1, through: 10, by: 1) {
+    print(indice)
+}
+
+var nomes = ["Ralf", "Aline", "Henrique", "Viviane"]
+nomes.forEach {
+    print($0)
+}*/
+
+
+
+// Range (intervalos)
+/*for indice in 1...5 {
+    print(indice)
+}
+
+for indice in 1..<5 {
+    print(indice)
+}
+
+var numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+print(numeros[..<5])
+print(numeros[5...])*/
+
+/*
+    DICA!
+    Na linguagem Swift, você pode implementar o uso dos comandos:
+    continue
+    break
+*/
+
+
+// Funções
+/*//func helloWorld() {
+func helloWorld() -> Void {
+    print("Hello World!")
+}
+helloWorld()
+
+
+func helloName(nome: String) -> String {
+    return "Hello \(nome)!"
+}
+print(helloName(nome: "Ralf"))
+
+
+func somar(_ numero1: Int, _ numero2: Int) -> Int {
+    return numero1 + numero2
+}
+print(somar(7, 8))*/
+
+
+
+// Coleções
+/*
+    ARRAY      -> Vetor simples
+    Exemplo desenvolvida anteriormente
+ 
+ 
+    SET        -> Vetor que não aceita dados duplicados (Retorna em ordem aleatória)
+    var numeros: Set<Int> = [2, 5, 7, 2, 9, 2]
+    print(numeros)
+ 
+ 
+    DICTIONARY -> Equivale ao comando MAP. Estrutura de chave -> valor
+    var contatos: [String: Int] = ["Juliana": 28]
+    contatos["Ricardo"] = 34
+    print(contatos["Juliana"] ?? 0)
+    print(contatos)
+*/
+
+
+
+// MAP, FILTER e REDUCE
+/*var numeros = [1, 2, 3, 4]
+
+// MAP -> Percorrer uma coleção/lista de dados e gerar/modificar valores
+let numerosDobrados = numeros.map{ $0 * 2 }
+print(numerosDobrados)
+
+
+// FILTER -> Filtrar informações
+let numerosPares = numeros.filter{ $0 % 2 == 0 }
+print(numerosPares)
+
+
+// REDUCE -> Agrupar dados (geralmente retorna uma quantidade)
+let soma1 = numeros.reduce(0, {acumulador, numeroAtual in return acumulador + numeroAtual})
+print(soma1)
+
+let soma2 = numeros.reduce(0, +)
+print(soma2)*/
