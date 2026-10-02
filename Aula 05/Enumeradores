@@ -11,7 +11,7 @@ switch minhaLinguagem {
     print("Linguagem de estilos.")
     
     case Linguagens.javaScript:
-    print("Linguagem de programação")
+    print("Linguagem de programação.")
     
     default:
     print("Linguagem desconhecida.")
