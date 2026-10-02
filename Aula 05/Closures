@@ -1,0 +1,43 @@
+// Closures -> Função anônima (Lambda ou Arrow Function)
+
+// 1º Função convencional
+func soma1(_ numero1: Int, _ numero2: Int) -> Int {
+    return numero1 + numero2
+}
+
+// 2º Closure
+let soma2: (_ numero1: Int, _ numero2: Int) -> Int = { n1, n2 in
+    return n1 + n2
+}
+
+let soma3: (_ numero1: Int, _ numero2: Int) -> Int = {
+    $0 + $1
+}
+
+// Testes
+//print(soma1(7, 5))
+//print(soma2(8, 1))
+//print(soma3(4, 2))
+
+
+// Trailing Closure
+let calculoSurpresa1: (
+    _ numero1: Double,
+    _ numero2: Double,
+    _ operacao: (Double, Double) -> Double
+) -> Double = {
+    n1, n2, op in
+    op(n1, n2)
+}
+
+let calculoSurpresa2: (
+    Double,
+    Double,
+    (Double, Double) -> Double
+) -> Double = {
+    n1, n2, op in
+    op(n1, n2)
+}
+
+print(calculoSurpresa1(4, 5, {$0 + $1}))
+print(calculoSurpresa2(3, 6) {$0 * $1})

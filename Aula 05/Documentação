@@ -1,0 +1,39 @@
+// Documentação: Class, Struct, Funções, etc.
+
+/// Função para retornar a média
+///
+/// Serão disponibilizados dois parâmetros do tipo Double e haverá um retorno também do tipo Double.
+///
+/// Comandos Markdown: **Negrito** e *Itálico*
+///
+/// [Acessar site 📘](https://www.ralflima.com)
+///
+/// Exemplo de uso
+/// ```
+/// let resultado = media(7, 8)
+/// print(resultado)
+/// ```
+///
+/// - Parameters:
+///   - nota1: O primeiro valor do tipo Double (ex: primeira nota do aluno).
+///   - nota2: O segundo valor do tipo Double (ex: segunda nota do aluno).
+///
+/// - Returns: Retorna um número do tipo Double.
+///
+/// - Warning: Alerta para essa função!
+///
+/// - Important: A função precisa de implementações.
+///
+/// - Bug: Falha ao relivar o cálculo de média.
+///
+/// - Experiment: Estrutura em fase de testes.
+///
+/// - Note: Falta disponibilizar acesso com a API.
+///
+/// - Todo: Função em desenvolvimento.
+///
+/// - Throws: A função possui validação para o tipo Double.
+///
+func media(nota1: Double, nota2: Double) -> Double {
+    return (nota1 + nota2) / 2
+}

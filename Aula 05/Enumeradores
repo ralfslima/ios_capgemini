@@ -1,0 +1,28 @@
+// Enums
+enum Linguagens { case html, css, javaScript }
+
+let minhaLinguagem = Linguagens.html
+
+switch minhaLinguagem {
+    case Linguagens.html:
+    print("Linguagem de marcação.")
+    
+    case Linguagens.css:
+    print("Linguagem de estilos.")
+    
+    case Linguagens.javaScript:
+    print("Linguagem de programação")
+    
+    default:
+    print("Linguagem desconhecida.")
+}
+
+/*
+    Dicas:
+    1º O enum inicia com a primeira letra em maiúscula e as demais ficam minúsculas.
+    Você pode usar a estrutura PascalCase ou UpperCamelCase, exemplo: LinguagemDeProgramacao.
+    
+ 
+    2º Os valores contidos em um enum, iniciam com letras minúsculas.
+    Você pode usar a estrutura camelCase, exemplo: javaScript.
+*/
