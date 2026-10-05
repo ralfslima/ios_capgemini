@@ -1,0 +1,41 @@
+// Definir o Enums
+enum ErroAutenticacao: Error {
+    case nomeUsuario(nome: String)
+    case senhaUsuario(senha: String)
+}
+
+// Função que irá utilizar o Enums como base
+func autenticarUsuario(nome: String, senha: String) throws -> String  {
+    // Validar se o nome é admin
+    if nome != "admin" {
+        throw ErroAutenticacao.nomeUsuario(nome: nome)
+    }
+    
+    // Validar se a senha é 123
+    if senha != "123" {
+        throw ErroAutenticacao.senhaUsuario(senha: senha)
+    }
+    
+    // Caso informe admin e 123, retorna um token
+    return "Ab6Ty45w0"
+}
+
+// Realizar a autenticação
+//do {
+//    // Caso esteja tudo ok, o token é disponibilizado
+//    let retornoDaAutenticacao = try autenticarUsuario(nome: "admin", senha: "123")
+//    print("O token do usuário é: \(retornoDaAutenticacao)")
+//} catch ErroAutenticacao.nomeUsuario(_) {
+//    print("Nome de usuário inválido!")
+//} catch ErroAutenticacao.senhaUsuario(_){
+//    print("Senha inválida!")
+//} catch {
+//    print("Falha!")
+//}
+
+// Optional Binding (Ligação Opcional)
+if let retornoDaAutenticacao = try? autenticarUsuario(nome: "admin", senha: "123") {
+    print(retornoDaAutenticacao)
+} else {
+    print("Usuário/senha incorreto!")
+}

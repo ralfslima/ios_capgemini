@@ -1,0 +1,69 @@
+// Enums exemplo 01
+enum Linguagens { case html, css, javaScript }
+
+let minhaLinguagem = Linguagens.html
+
+switch minhaLinguagem {
+    case Linguagens.html:
+    print("Linguagem de marcação.")
+    
+    case Linguagens.css:
+    print("Linguagem de estilos.")
+    
+    case Linguagens.javaScript:
+    print("Linguagem de programação.")
+    
+    default:
+    print("Linguagem desconhecida.")
+}
+
+
+
+
+// Enums exemplo 02
+enum Linguagens2: String {
+    case html = "HTML"
+    case css = "CSS"
+    case javaScript = "JavaScript"
+}
+
+let linguagemSelecionada = Linguagens2.html
+
+switch linguagemSelecionada.rawValue {
+    case "HTML":
+    print("Linguagem de marcação.")
+    
+    case "CSS":
+    print("Linguagem de estilos.")
+    
+    case "JavaScript":
+    print("Linguagem de programação.")
+    
+    default:
+    print("Linguagem desconhecida.")
+}
+
+
+
+
+// Enums exemplo 03
+enum SituacaoAluno {
+    case aprovado(media: Double)
+    case reprovado(descricao: String)
+}
+
+let joao = SituacaoAluno.aprovado(media: 9.5)
+let douglas = SituacaoAluno.reprovado(descricao: "O aluno teve 30% de presença total.")
+
+
+
+
+/*
+    Dicas:
+    1º O enum inicia com a primeira letra em maiúscula e as demais ficam minúsculas.
+    Você pode usar a estrutura PascalCase ou UpperCamelCase, exemplo: LinguagemDeProgramacao.
+    
+ 
+    2º Os valores contidos em um enum, iniciam com letras minúsculas.
+    Você pode usar a estrutura camelCase, exemplo: javaScript.
+*/

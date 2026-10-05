@@ -1,0 +1,15 @@
+// Função para validar a idade
+func validarIdade(idade: Int?) {
+    // Guard let
+    guard let idadeValida = idade
+    else {
+        print("A idade não pode ser nula!")
+        return
+    }
+    
+    // Retornar a idade validada
+    print("A idade informada é \(idadeValida)")
+}
+
+validarIdade(idade: 25)
+validarIdade(idade: nil)

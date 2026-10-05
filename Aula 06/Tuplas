@@ -1,0 +1,18 @@
+/*
+    Tuplas são objetos que podem ter informações/características de tipos de dados diferentes.
+ 
+    Tuplas podem ser mutáveis (var) ou imutáveis (let).
+ 
+    Utilizando as boas práticas da linguagem Swift, tuplas geralmente são imutáveis (let).
+*/
+let produto: (nome: String, valor: Double) = ("MacBook Pro M5", 25000)
+print(produto.nome)
+print(produto.valor)
+
+let alunos = (
+    aluno1: (nome: "Juliana",  media: 9),
+    aluno2: (nome: "Érica",    media: 10),
+    aluno3: (nome: "Fernando", media: 8)
+)
+print(alunos)
+print(alunos.aluno1)
