@@ -1,0 +1,202 @@
+// Para ter acesso a funções matemáticas.
+import Foundation
+
+// 1º Exemplo - Classe, atributo, método e objeto.
+//class Pessoa {
+//    // Atributo
+//    var nome: String = ""
+//    
+//    // Função/método
+//    func apresentacao()-> Void {
+//        print("Olá! Meu nome é \(nome).")
+//    }
+//}
+//
+//let p1 = Pessoa()
+//p1.nome = "Alice"
+//p1.apresentacao()
+
+
+// 2º Exemplo - Construtor e destrutor.
+//class Pessoa {
+//    // Atributo
+//    var nome: String = ""
+//    
+//    // Construtor
+//    init() {
+//        print("Construtor executado!")
+//    }
+//    
+//    init(nome: String) {
+//        self.nome = nome
+//        apresentacao()
+//    }
+//    
+//    // Destrutor
+//    deinit {
+//        print("Destrutor executado!")
+//    }
+//
+//    // Função/método
+//    func apresentacao()-> Void {
+//        print("Olá! Meu nome é \(nome).")
+//    }
+//}
+//
+//do {
+//    let p1 = Pessoa()
+//    p1.nome = "Alice"
+//    p1.apresentacao()
+//}
+//
+//let p2 = Pessoa(nome: "Henrique")
+
+
+// 3º Exemplo - Modificadores de acesso e propriedade computada.
+//class Produto {
+//    // Boas práticas: Atributos privados devem iniciar com underline
+//    private var _marca: String = ""
+//    
+//    // Propriedade computada (GET e SET)
+//    var marca: String {
+//        get { return _marca }
+//        set(marca) { _marca = marca }
+//    }
+//}
+//
+//let p = Produto()
+//p.marca = "Apple"
+//print(p.marca)
+
+/*
+    Internal (padrão/default): Visível dentro do módulo.
+    
+    Private: Visível dentro da classe.
+ 
+    Public: Visível dentro do módulo e de módulos externos.
+    Restrições:
+        - Não pode herdar classes de outros módulos.
+        - Não é possível sobrescrita.
+ 
+    Open: Visível dentro do módulo e de módulos externos.
+    Sem restrições (comparado com o Public):
+        - Pode herdar classes de outros módulos.
+        - Pode realizar a sobrescrita.
+*/
+
+
+// 4º Exemplo - Herança
+//class Pessoa {
+//    private var _nome: String = ""
+//    
+//    var nome: String {
+//        get { return _nome }
+//        set(nome) { _nome = nome }
+//    }
+//}
+//
+//class Colaborador: Pessoa {
+//    var cargo: String = ""
+//    var salario: Double = 0.0
+//    
+//    func exibirDados() -> Void {
+//        print("Nome: \(nome)")
+//        print("Cargo: \(cargo)")
+//        print("Salário: \(salario)")
+//    }
+//}
+//
+//let obj = Colaborador()
+//obj.nome = "Viviane"
+//obj.cargo = "Desenvolvedora iOS"
+//obj.salario = 9800.00
+//obj.exibirDados()
+
+
+// 5º Exemplo - Herança (super)
+//class Pessoa {
+//    private var _nome: String = ""
+//    
+//    var nome: String {
+//        get { return _nome }
+//        set(nome) { _nome = nome }
+//    }
+//    
+//    init(nome: String) {
+//        //_nome = nome
+//        self.nome = nome
+//    }
+//}
+//
+//class Colaborador: Pessoa {
+//    private var _cargo: String = ""
+//    private var _salario: Double = 0.0
+//    
+//    init(nome: String, cargo: String, salario: Double) {
+//        _cargo = cargo
+//        _salario = salario
+//        
+//        super.init(nome: nome)
+//    }
+//    
+//    func exibirDados() -> Void {
+//        print("Nome: \(nome)")
+//        print("Cargo: \(_cargo)")
+//        print("Salário: \(_salario)")
+//    }
+//}
+//
+//let obj = Colaborador(nome: "Viviane", cargo: "Desenvolvedora iOS", salario: 9800)
+//obj.exibirDados()
+
+
+// 6º Exemplo - Atributos e funções/métodos estáticos
+//class Calculadora {
+//    // Atributo
+//    static var numero: Int = 8
+//    
+//    // Função
+//    static func somar(_ numero1: Int, _ numero2: Int) -> Void {
+//        print("A soma de \(numero1) + \(numero2) é \(numero1 + numero2)")
+//    }
+//}
+//
+//print(Calculadora.numero)
+//Calculadora.somar(5, 4)
+
+
+// 7º Exemplo - Protocol (Abstração e Interface)
+protocol CalculadoraSimples {
+    func somar(_ n1: Int, _ n2: Int) -> Int
+    
+    func subtrair(_ n1: Int, _ n2: Int) -> Int
+}
+
+protocol CalculadoraCientifica {
+    func seno(_ angulo: Double) -> Double
+    
+    func cosseno(_ angulo: Double) -> Double
+}
+
+
+class Calculadora: CalculadoraSimples, CalculadoraCientifica {
+    func somar(_ n1: Int, _ n2: Int) -> Int {
+        return n1 + n2
+    }
+    
+    func subtrair(_ n1: Int, _ n2: Int) -> Int {
+        return n1 - n2
+    }
+    
+    func seno(_ angulo: Double) -> Double {
+        let radianos = angulo * .pi / 180
+        return radianos
+    }
+    
+    func cosseno(_ angulo: Double) -> Double {
+        let radianos = angulo * .pi / 180
+        return radianos
+    }
+}
+
+let obj = Calculadora()
