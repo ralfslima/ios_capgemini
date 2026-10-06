@@ -190,12 +190,12 @@ class Calculadora: CalculadoraSimples, CalculadoraCientifica {
     
     func seno(_ angulo: Double) -> Double {
         let radianos = angulo * .pi / 180
-        return radianos
+        return sin(radianos)
     }
     
     func cosseno(_ angulo: Double) -> Double {
         let radianos = angulo * .pi / 180
-        return radianos
+        return cos(radianos)
     }
 }
 
