@@ -1,0 +1,410 @@
+// Para ter acesso a funções matemáticas.
+import Foundation
+
+// 1º Exemplo - Classe, atributo, método e objeto.
+//class Pessoa {
+//    // Atributo
+//    var nome: String = ""
+//    
+//    // Função/método
+//    func apresentacao()-> Void {
+//        print("Olá! Meu nome é \(nome).")
+//    }
+//}
+//
+//let p1 = Pessoa()
+//p1.nome = "Alice"
+//p1.apresentacao()
+
+
+// 2º Exemplo - Construtor e destrutor.
+//class Pessoa {
+//    // Atributo
+//    var nome: String = ""
+//    
+//    // Construtor
+//    init() {
+//        print("Construtor executado!")
+//    }
+//    
+//    init(nome: String) {
+//        self.nome = nome
+//        apresentacao()
+//    }
+//    
+//    // Destrutor
+//    deinit {
+//        print("Destrutor executado!")
+//    }
+//
+//    // Função/método
+//    func apresentacao()-> Void {
+//        print("Olá! Meu nome é \(nome).")
+//    }
+//}
+//
+//do {
+//    let p1 = Pessoa()
+//    p1.nome = "Alice"
+//    p1.apresentacao()
+//}
+//
+//let p2 = Pessoa(nome: "Henrique")
+
+
+// 3º Exemplo - Modificadores de acesso e propriedade computada.
+//class Produto {
+//    // Boas práticas: Atributos privados devem iniciar com underline
+//    private var _marca: String = ""
+//    
+//    // Propriedade computada (GET e SET)
+//    var marca: String {
+//        get { return _marca }
+//        set(marca) { _marca = marca }
+//    }
+//}
+//
+//let p = Produto()
+//p.marca = "Apple"
+//print(p.marca)
+
+/*
+    Internal (padrão/default): Visível dentro do módulo.
+    
+    Private: Visível dentro da classe.
+ 
+    Public: Visível dentro do módulo e de módulos externos.
+    Restrições:
+        - Não pode herdar classes de outros módulos.
+        - Não é possível sobrescrita.
+ 
+    Open: Visível dentro do módulo e de módulos externos.
+    Sem restrições (comparado com o Public):
+        - Pode herdar classes de outros módulos.
+        - Pode realizar a sobrescrita.
+*/
+
+
+// 4º Exemplo - Herança
+//class Pessoa {
+//    private var _nome: String = ""
+//    
+//    var nome: String {
+//        get { return _nome }
+//        set(nome) { _nome = nome }
+//    }
+//}
+//
+//class Colaborador: Pessoa {
+//    var cargo: String = ""
+//    var salario: Double = 0.0
+//    
+//    func exibirDados() -> Void {
+//        print("Nome: \(nome)")
+//        print("Cargo: \(cargo)")
+//        print("Salário: \(salario)")
+//    }
+//}
+//
+//let obj = Colaborador()
+//obj.nome = "Viviane"
+//obj.cargo = "Desenvolvedora iOS"
+//obj.salario = 9800.00
+//obj.exibirDados()
+
+
+// 5º Exemplo - Herança (super)
+//class Pessoa {
+//    private var _nome: String = ""
+//    
+//    var nome: String {
+//        get { return _nome }
+//        set(nome) { _nome = nome }
+//    }
+//    
+//    init(nome: String) {
+//        //_nome = nome
+//        self.nome = nome
+//    }
+//}
+//
+//class Colaborador: Pessoa {
+//    private var _cargo: String = ""
+//    private var _salario: Double = 0.0
+//    
+//    init(nome: String, cargo: String, salario: Double) {
+//        _cargo = cargo
+//        _salario = salario
+//        
+//        super.init(nome: nome)
+//    }
+//    
+//    func exibirDados() -> Void {
+//        print("Nome: \(nome)")
+//        print("Cargo: \(_cargo)")
+//        print("Salário: \(_salario)")
+//    }
+//}
+//
+//let obj = Colaborador(nome: "Viviane", cargo: "Desenvolvedora iOS", salario: 9800)
+//obj.exibirDados()
+
+
+// 6º Exemplo - Atributos e funções/métodos estáticos
+//class Calculadora {
+//    // Atributo
+//    static var numero: Int = 8
+//    
+//    // Função
+//    static func somar(_ numero1: Int, _ numero2: Int) -> Void {
+//        print("A soma de \(numero1) + \(numero2) é \(numero1 + numero2)")
+//    }
+//}
+//
+//print(Calculadora.numero)
+//Calculadora.somar(5, 4)
+
+
+// 7º Exemplo - Protocol (Abstração e Interface)
+//protocol CalculadoraSimples {
+//    func somar(_ n1: Int, _ n2: Int) -> Int
+//    
+//    func subtrair(_ n1: Int, _ n2: Int) -> Int
+//}
+//
+//protocol CalculadoraCientifica {
+//    func seno(_ angulo: Double) -> Double
+//    
+//    func cosseno(_ angulo: Double) -> Double
+//}
+//
+//
+//class Calculadora: CalculadoraSimples, CalculadoraCientifica {
+//    func somar(_ n1: Int, _ n2: Int) -> Int {
+//        return n1 + n2
+//    }
+//    
+//    func subtrair(_ n1: Int, _ n2: Int) -> Int {
+//        return n1 - n2
+//    }
+//    
+//    func seno(_ angulo: Double) -> Double {
+//        let radianos = angulo * .pi / 180
+//        return sin(radianos)
+//    }
+//    
+//    func cosseno(_ angulo: Double) -> Double {
+//        let radianos = angulo * .pi / 180
+//        return cos(radianos)
+//    }
+//}
+//
+//let obj = Calculadora()
+
+
+// 8º Exemplo - Polimorfismo
+
+//// Sobrecarga (overloading)
+//class Calculos {
+//    
+//    func somar(_ n1: Int, _ n2: Int) -> Void {
+//        print("A soma dos dois valores é \(n1 + n2)")
+//    }
+//    
+//    func somar(_ n1: Int, _ n2: Int, _ n3: Int) -> Void {
+//        print("A soma dos três valores é \(n1 + n2 + n3)")
+//    }
+//    
+//}
+//
+//let objCalculos = Calculos()
+//objCalculos.somar(5, 4)
+//objCalculos.somar(5, 6, 4)
+//
+//
+//// Sobrescrita (override)
+//class DescontoPadrao {
+//    
+//    var salario: Double = 0.0
+//    
+//    func desconto() -> Void {
+//        print("O Desconto Padrão será de \(salario * 0.1)")
+//    }
+//    
+//}
+//
+//class DescontoTI: DescontoPadrao {
+//    
+//    override func desconto() -> Void {
+//        print("O Desconto para TI será de \(salario * 0.2)")
+//    }
+//    
+//}
+//
+//let objPadrao = DescontoPadrao()
+//objPadrao.salario = 5000
+//objPadrao.desconto()
+//
+//let objTI = DescontoTI()
+//objTI.salario = 5000
+//objTI.desconto()
+
+
+// 10º Exemplo - Extesion
+//class Calculadora {
+//    
+//    func somar(_ n1: Int, _ n2: Int) -> Int {
+//        return n1 + n2
+//    }
+//    
+//    func subtrair(_ n1: Int, _ n2: Int) -> Int {
+//        return n1 - n2
+//    }
+//    
+//}
+//
+//extension Calculadora {
+//   
+//    func multiplicar(_ n1: Int, _ n2: Int) -> Int {
+//        return n1 * n2
+//    }
+//    
+//}
+//
+//let obj = Calculadora()
+
+
+
+// 11º Exemplo - Generics
+
+//// 1ª Etapa -> Criar o protocol
+//protocol Cadastravel {
+//    var id: Int { get }
+//    func exibirDados() -> String
+//}
+//
+//// 2ª Etapa -> Criar as classes
+//class Pessoa: Cadastravel {
+//    // Atributos
+//    var id: Int
+//    var nome: String = ""
+//    
+//    // Construtor
+//    init(id: Int, nome: String) {
+//        self.id = id
+//        self.nome = nome
+//    }
+//    
+//    // Função
+//    func exibirDados() -> String {
+//        return "👤 Identificador: \(id) | Nome: \(nome)"
+//    }
+//}
+//
+//class Produto: Cadastravel {
+//    // Atributos
+//    var id: Int
+//    var nome: String = ""
+//    
+//    // Construtor
+//    init(id: Int, nome: String) {
+//        self.id = id
+//        self.nome = nome
+//    }
+//    
+//    // Função
+//    func exibirDados() -> String {
+//        return "📦 Identificador: \(id) | Nome: \(nome)"
+//    }
+//}
+//
+////3ª Etapa -> Criar classe genérica para gerenciar os dados
+//class GerenciarDados<T: Cadastravel> {
+//    
+//    // Vetor genérico
+//    private var vetor: [T] = []
+//    
+//    // Função para efetuar o cadastro
+//    func cadastrar(obj: T) {
+//        vetor.append(obj)
+//    }
+//    
+//    // Função para listar os registros
+//    func listar() {
+//        for item in vetor {
+//            print(item.exibirDados())
+//        }
+//        print("----------------")
+//    }
+//}
+//
+//
+//// 4º Etapa -> Vetores de cada tipo de dado e criar os objetos.
+//let vetorPessoas  = GerenciarDados<Pessoa>()
+//let vetorProdutos = GerenciarDados<Produto>()
+//
+//let pessoa1 = Pessoa(id: 1, nome: "Aline")
+//let pessoa2 = Pessoa(id: 2, nome: "Douglas")
+//let pessoa3 = Pessoa(id: 3, nome: "Fernanda")
+//
+//let produto1 = Produto(id: 1, nome: "MacBook Pro M5 16GB")
+//let produto2 = Produto(id: 2, nome: "iPhone 18")
+//let produto3 = Produto(id: 3, nome: "Monitor LG 32 polegadas")
+//
+//vetorPessoas.cadastrar(obj: pessoa1)
+//vetorPessoas.cadastrar(obj: pessoa2)
+//vetorPessoas.cadastrar(obj: pessoa3)
+//
+//vetorProdutos.cadastrar(obj: produto1)
+//vetorProdutos.cadastrar(obj: produto2)
+//vetorProdutos.cadastrar(obj: produto3)
+//
+//vetorPessoas.listar()
+//vetorProdutos.listar()
+
+
+// 12º Exemplo - Struct
+struct Pessoa {
+    var nome: String
+    var idade: Int
+}
+
+//class Pessoa {
+//    var nome: String = ""
+//    var idade: Int = 0
+//    
+//    init(nome: String, idade: Int) {
+//        self.nome = nome
+//        self.idade = idade
+//    }
+//}
+
+let p1 = Pessoa(nome: "Priscila", idade: 31)
+
+var p2 = p1
+p2.nome = "Luciana"
+
+print(p1.nome)
+print(p2.nome)
+
+// Características das Structs em Swift
+
+// 1. Tipo de Valor (Value Type)
+// - Elas são copiadas quando atribuídas a uma nova variável ou passadas para uma função.
+// - Modificar uma cópia não altera a instância original, garantindo mais segurança contra efeitos colaterais.
+
+// 2. Inicializador Padrão Automático (Memberwise Initializer)
+// - O Swift gera automaticamente um inicializador que aceita parâmetros para todas as propriedades.
+// - Não há necessidade de escrever o código do `init` manualmente, a menos que você queira uma lógica customizada.
+
+// 3. Imutabilidade com 'let'
+// - Se uma instância de struct for declarada com `let`, todas as suas propriedades se tornam imutáveis.
+// - Isso acontece mesmo que as propriedades internas tenham sido declaradas com `var`.
+
+// 4. Mutabilidade Explícita (Mutating Methods)
+// - Funções internas que alteram as propriedades da struct precisam da palavra-chave `mutating`.
+// - Isso avisa ao compilador que o método vai modificar o valor da própria estrutura.
+
+// 5. Sem Herança
+// - Structs não podem herdar de outras structs (não existe herança de classe para classe).
+// - No entanto, elas podem adotar e herdar comportamentos através de Protocolos (Protocols).
