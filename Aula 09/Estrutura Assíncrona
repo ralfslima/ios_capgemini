@@ -1,0 +1,39 @@
+// Importar Foundation para ter acesso as funcionalidades assíncronas
+import Foundation
+
+// Classe de cálculo
+class Calculo {
+    
+    // Função
+    static func media(_ nota1: Double, _ nota2: Double) async -> Double {
+        // 1ª Etapa - Realizar a soma
+        print("➕ Realizar a soma")
+        let soma = nota1 + nota2
+        
+        // 2ª Etapa - Temporizador
+        try? await Task.sleep(for: .seconds(3))
+        
+        // 3º Etapa - Realizar a divisão
+        print("➗ Realizar a divisão")
+        let divisao = soma / 2
+        
+        // 4ª Etapa - Temporizador
+        try? await Task.sleep(for: .seconds(3))
+        
+        // 5ª Etapa - Retorno da média
+        return divisao
+    }
+    
+}
+
+// Executar a função para realizar a média
+Task {
+    let media = await Calculo.media(7, 9)
+    
+    print("A média é \(media)")
+    
+    exit(0) // Força o encerramento do terminal
+}
+
+// Manter o terminal em funcionamento (Caso utilize estrutura assíncrona)
+RunLoop.main.run()
