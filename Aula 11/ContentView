@@ -1,0 +1,53 @@
+// Importação do SwiftUI
+import SwiftUI
+
+// ContentView (Disponibilizar os conteúdos da tela)
+struct ContentView: View {
+    
+    var body: some View {
+        
+        // Componentes de alinhamento/estruturação
+        // VStack -> Alinhamento vertical
+        // HStack -> Alinhamento horizontal
+        
+        VStack {
+            // Texto básico
+            Text("Hello, world!")
+                .font(.system(size: 30, weight: .bold))
+                .foregroundStyle(.blue)  // Mais indicado para especificar uma cor
+                .padding()
+                //.font(.largeTitle)
+                //.foregroundStyle(Color.green)
+            
+            // Texto com fonte customizada
+            Text("Aprendendo SwiftUI")
+                .font(.custom("Matcha Style", size: 30))
+                .padding()
+            
+            // Exibir um ícone
+            Image(systemName: "flag.pattern.checkered")
+                .resizable()   // Permite modificar o tamanho
+                .scaledToFit() // Mantém a proporção do ícone
+                .frame(width:100, height:100) // Área do ícone
+                .foregroundStyle(.brown)
+                .padding()
+            
+            // Exibir uma imagem
+            Image("capgemini")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 200, height: 200)
+                .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        //.background(.gray)
+        //.background(Color(red: 0.1, green: 0.7, blue: 0.8))
+        .background(Color(red: 131/255, green: 87/255, blue: 207/255))
+    }
+    
+}
+
+// Para exibir no Canvas
+#Preview {
+    ContentView()
+}
