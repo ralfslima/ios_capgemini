@@ -1,0 +1,35 @@
+// Importar SwiftUI
+import SwiftUI
+
+// Estrutura da tela
+struct ContentView: View {
+    // Variável para armazenar o texto digitado no TextField
+    @State private var texto: String = ""
+    
+    // Estrutura da tela
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            // Campo de texto - TextField
+            TextField("Digite algo...", text: $texto)
+                .padding()
+            
+            // Condicional
+            if texto.isEmpty {
+                Text("Informe algo no TextField!")
+            } else {
+                Text("Você digitou: \(texto).")
+            }
+            
+        }
+        .padding()
+            
+    }
+}
+
+// Visualizar aplicação no Canvas
+#Preview {
+    ContentView()
+}

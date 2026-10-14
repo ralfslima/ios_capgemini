@@ -1,0 +1,66 @@
+// Importação do SwiftUI
+import SwiftUI
+
+// Estrutura da tela
+struct ContentView: View {
+    // Estrutura de obj do tipo Pessoa
+    struct Pessoa: Identifiable {
+        let id = UUID()
+        let nome: String
+        let idade: Int
+    }
+    
+    // Fonte de dados (array)
+    private var pessoas = [
+        Pessoa(nome: "Ana Carolina", idade: 34),
+        Pessoa(nome: "Nícolas Machado", idade: 19),
+        Pessoa(nome: "Júlio Almeida", idade: 54),
+        Pessoa(nome: "Fernanda Silva", idade: 12),
+        Pessoa(nome: "Viviane Souza", idade: 43),
+        Pessoa(nome: "Marcelo de Mattos", idade: 31),
+        Pessoa(nome: "Giovane Bilz", idade: 22)
+    ]
+    
+    // Variável para obter o termo de pesquisa
+    @State private var termo: String = ""
+    
+    // Propriedade computada (Retorna a lista de pessoas filtrada)
+    var pessoasFiltradas: [Pessoa] {
+        if termo.isEmpty {
+            return pessoas
+        } else {
+            return pessoas.filter { $0.nome.localizedCaseInsensitiveContains(termo) }
+        }
+    }
+    
+    // Estruturar o "corpo" da tela (componentes)
+    var body: some View {
+        
+        // Componente de navegação
+        NavigationStack {
+            
+            // Listar dados
+            List(pessoasFiltradas) { p in
+                
+                // Alinhar nome e idade na horizontal
+                HStack {
+                    Text(p.nome)
+                    
+                    Spacer()
+                    
+                    Text("\(p.idade) anos")
+                }
+                
+            }
+            .navigationTitle("Contatos")
+            .searchable(text: $termo, prompt: "Informe um termo")
+            
+        }
+        
+    }
+}
+
+// Preview via Canvas
+#Preview {
+    ContentView()
+}
