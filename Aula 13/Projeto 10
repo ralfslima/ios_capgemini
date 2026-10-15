@@ -1,0 +1,58 @@
+// Importar SwiftUI
+import SwiftUI
+
+// Conteúdos da primeira aba
+struct Aba1View: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "house.fill")
+                .font(.system(size: 100))
+                .foregroundStyle(.blue)
+            
+            Text("Tela inicial")
+                .font(.title)
+        }
+    }
+}
+
+// Conteúdos da segunda aba
+struct Aba2View: View {
+    var body: some View {
+        VStack {
+            Image(systemName: "shippingbox.fill")
+                .font(.system(size: 100))
+                .foregroundStyle(.brown)
+            
+            Text("Tela de produtos")
+                .font(.title)
+        }
+    }
+}
+
+// Estrutura principal
+struct ContentView: View {
+    
+    // Variável para informar qual aba será aberta/exibida
+    @State private var aba: Int = 0
+    
+    // Body
+    var body: some View {
+        
+        // TabView
+        TabView(selection: $aba) {
+            Aba1View()
+                .tabItem { Label("Início", systemImage: "house") }
+                .tag(0)
+            Aba2View()
+                .tabItem { Label("Produtos", systemImage: "shippingbox") }
+                .tag(1)
+        }
+        .accentColor(.green)
+            
+    }
+
+}
+
+#Preview {
+    ContentView()
+}

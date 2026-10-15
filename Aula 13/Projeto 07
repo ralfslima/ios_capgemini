@@ -1,0 +1,43 @@
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Variável lógica
+    @State private var estado: Bool = false
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            // Formas
+            if estado {
+                Circle()
+                    .fill(.blue)
+                    .frame(width: 200, height: 200)
+                    .shadow(radius: 20)
+            } else {
+                Rectangle()
+                    .fill(.yellow)
+                    .frame(width: 200, height: 200)
+                    .shadow(radius: 20)
+            }
+            
+            // Toggle
+            Toggle(isOn: $estado) {
+                Text("Alterar forma")
+            }
+            .padding()
+            .background(Color(.systemGray4))
+            .cornerRadius(10)
+            .padding()
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

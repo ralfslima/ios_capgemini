@@ -1,0 +1,67 @@
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            // 1. Rolagem horizontal
+            Text("Rolagem horizontal")
+                .font(.title2)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    
+                    ForEach(1...10, id: \.self) { indice in
+                        
+                        Circle()
+                            .fill(.orange.gradient)
+                            .frame(width: 80, height: 80)
+                            .overlay(
+                                Text("\(indice)")
+                                    .foregroundStyle(.white)
+                                    .bold()
+                            )
+                        
+                    }
+                    
+                }
+                .padding(.horizontal)
+            }
+            
+            
+            
+            // 2. Rolagem vertical
+            Text("Rolagem vertical")
+                .font(.title2)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    
+                    ForEach(1...10, id: \.self) { indice in
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.purple.gradient)
+                            .frame(height: 150)
+                            .overlay(
+                                Text("\(indice)")
+                                    .font(.title)
+                                    .foregroundStyle(.white)
+                                    .bold()
+                            )
+                        
+                    }
+                    
+                }
+                .padding(.horizontal)
+            }
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

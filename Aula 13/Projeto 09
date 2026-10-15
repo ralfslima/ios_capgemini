@@ -1,0 +1,32 @@
+import SwiftUI
+
+struct ContentView: View {
+    // Variável
+    @State private var valor: Double = 50.0
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack {
+     
+            // Forma
+            Image(systemName: "sun.max")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(Color.yellow)
+                .frame(width: valor, height: valor)
+                .padding(.bottom, 50)
+            
+            // Slider
+            Slider(value: $valor, in: 20...200)
+            
+        }
+        .padding()
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

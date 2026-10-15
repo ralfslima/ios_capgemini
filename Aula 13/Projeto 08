@@ -1,0 +1,33 @@
+import SwiftUI
+
+struct ContentView: View {
+    // Variável para armazenar a data
+    @State private var data = Date()
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            // DatePicker
+            DatePicker(
+                "Informe a data",
+                selection: $data,
+                displayedComponents: [.date]
+            )
+                .datePickerStyle(.graphical)
+                .padding()
+            
+            // Exibir a data selecionada
+            Text(data, style: .date)
+                .font(.title)
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}
