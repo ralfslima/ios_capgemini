@@ -1,0 +1,41 @@
+/*
+    COMPONENTES DE AGRUPAMENTO E ALINHAMENTO
+    VStack -> Agrupar componentes verticalmente.
+    HStack -> Agrupar componentes horizontalmente.
+    ZStack -> Agrupar componentes através de pilhas.
+*/
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        // ZStack
+        ZStack {
+            // 1º Componente
+            Rectangle()
+                .fill(.blue)
+                .frame(width: 300, height: 300)
+                .cornerRadius(20) // Este comando está depreciado, prefira utilizar o RoundedRectangle.
+            
+            // 2º Componente
+            Circle()
+                .fill(.yellow)
+                .frame(width: 200, height: 200)
+            
+            // 3º Componente
+            Rectangle()
+                .fill(.red)
+                .frame(width: 100, height: 100)
+                .rotationEffect(.degrees(45))
+            
+            // 4º Componente
+            Text("ZStack")
+                .foregroundStyle(.white)
+                .bold()
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
