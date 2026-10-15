@@ -8,7 +8,7 @@ struct ContentView: View {
     @State private var exibir: Bool = false
     @State private var resposta: String = "Aguardando resposta do cliente..."
     
-    // Exibir componentes
+    // Exibir componentes 
     var body: some View {
         
         // VStack
