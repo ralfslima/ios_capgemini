@@ -1,0 +1,46 @@
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Variável para armazenar o conteúdo digitado no SecureField
+    @State private var senha: String = ""
+    
+    // Variável para ocultar/visualizar a senha
+    @State private var visibilidade: Bool = false
+    
+    var body: some View {
+        
+        // Formulário
+        Form {
+            
+            // HStack
+            HStack {
+                
+                // Condicional
+                if visibilidade {
+                    TextField("Informe a senha", text: $senha)
+                } else {
+                    SecureField("Informe a senha", text: $senha)
+                }
+                
+                // Botão para alterar a visibilidade
+                Button(action: {
+                    // 1ª maneira
+                    //visibilidade = !visibilidade
+                    
+                    // 2ª maneira
+                    visibilidade.toggle()
+                }){
+                    Image(systemName: visibilidade ? "eye.slash" : "eye")
+                }
+                
+            }
+            
+        }
+            
+    }
+}
+
+#Preview {
+    ContentView()
+}

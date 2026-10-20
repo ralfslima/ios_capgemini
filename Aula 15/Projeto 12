@@ -1,0 +1,40 @@
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Lista de contas
+    @State private var lista = ["Pessoal", "Profissional", "Corporativo"]
+    
+    // Conta selecionada
+    @State private var conta = "Pessoal"
+    
+    var body: some View {
+       
+        // NavigationStack (Para funcionar o pickerStyle do tipo navigationLink)
+        NavigationStack {
+            
+            // Formulário
+            Form {
+                
+                // Section
+                Section(header: Text("CONTA")) {
+                    
+                    // Picker
+                    Picker("Selecione o tipo da conta", selection: $conta) {
+                        ForEach(lista, id: \.self) { tipoConta in
+                            Text(tipoConta)
+                        }
+                    }
+                    .pickerStyle(.navigationLink)
+                }
+                
+            }
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

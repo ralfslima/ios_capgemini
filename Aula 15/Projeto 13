@@ -1,0 +1,73 @@
+import SwiftUI
+
+// Struct de Produto
+struct Produto: Identifiable {
+    let id = UUID()
+    let nome: String
+    let valor: Double
+    let cor: Color
+}
+
+// ContentView
+struct ContentView: View {
+    // Lista de produtos
+    let produtos = [
+        Produto(nome: "iPhone 18 Pro",      valor: 9800,  cor: .blue),
+        Produto(nome: "Macbook Pro M5",     valor: 12000, cor: .green),
+        Produto(nome: "Galaxy S26",         valor: 8400,  cor: .yellow),
+        Produto(nome: "TV LG Smart",        valor: 3500,  cor: .red),
+        Produto(nome: "iPhone 17 Pro",      valor: 8900,  cor: .purple),
+        Produto(nome: "Impressora HP 312S", valor: 1890,  cor: .teal),
+        Produto(nome: "iPhone 18 Pro",      valor: 9800,  cor: .blue),
+        Produto(nome: "Macbook Pro M5",     valor: 12000, cor: .green),
+        Produto(nome: "Galaxy S26",         valor: 8400,  cor: .yellow),
+        Produto(nome: "TV LG Smart",        valor: 3500,  cor: .red),
+        Produto(nome: "iPhone 17 Pro",      valor: 8900,  cor: .purple),
+        Produto(nome: "Impressora HP 312S", valor: 1890,  cor: .teal)
+    ]
+    
+    // Variável contendo as definições da coluna (GridItem)
+    let coluna = [
+        GridItem(.adaptive(minimum: 150), spacing: 15)
+    ]
+    
+    // Body
+    var body: some View {
+        
+        // Habilita a rolagem
+        ScrollView {
+            
+            // Grid
+            LazyVGrid(columns: coluna) {
+                
+                // Laço de repetição
+                ForEach(produtos) { produto in
+                    
+                    // VStack
+                    VStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(produto.cor.opacity(0.2))
+                            .frame(height: 150)
+                            .overlay(
+                                Image(systemName: "bag")
+                                    .font(.system(size: 60))
+                                    .foregroundStyle(produto.cor)
+                            )
+                        
+                        Text(produto.nome)
+                            .padding(.bottom, 30)
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        .padding()
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}
