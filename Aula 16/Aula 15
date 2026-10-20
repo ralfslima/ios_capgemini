@@ -1,0 +1,67 @@
+// Componente ShareLink disponível a partir das versão 16 do iOS.
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Link
+    private var link = URL(string: "https://www.apple.com.br")!
+    
+    // Imagem
+    private var imagem = Image("capgemini")
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            // 1º Exemplo
+            ShareLink(
+                //link ?? URL(string: "https://apple.com.br")!
+                item: link,
+                subject: Text("Site da Apple"),
+                message: Text("Site oficial da Apple")
+            ) {
+                HStack {
+                    Image(systemName: "safari")
+                    Text("Compartilhar site")
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.white)
+                .background(.orange)
+                .cornerRadius(10)
+            }
+            
+            // Divisor
+            Divider()
+                .padding(.vertical)
+            
+            // 2º Exemplo
+            ShareLink(
+                item: imagem,
+                preview: SharePreview(
+                    "Logo da Capgemini",
+                    image: imagem
+                )
+            ) {
+                HStack {
+                    Image(systemName: "photo")
+                    Text("Compartilhar imagem")
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .foregroundStyle(.white)
+                .background(.purple)
+                .cornerRadius(10)
+            }
+            
+        }
+        .padding()
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

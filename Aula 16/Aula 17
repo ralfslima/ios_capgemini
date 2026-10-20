@@ -1,0 +1,62 @@
+import SwiftUI
+import Charts // <- Pacote/Biblioteca disponível a partir da versão 16 do iOS
+
+// Struct
+struct FaturamentoMensal: Identifiable {
+    let id = UUID()
+    let mes: String
+    let valor: Double
+}
+
+// ContentView
+struct ContentView: View {
+    
+    // Lista contendo o faturamento de cada mês
+    let dados = [
+        FaturamentoMensal(mes: "Janeiro",   valor: 3500),
+        FaturamentoMensal(mes: "Fevereiro", valor: 4200),
+        FaturamentoMensal(mes: "Março",     valor: 2800),
+        FaturamentoMensal(mes: "Abril",     valor: 4900),
+        FaturamentoMensal(mes: "Maio",      valor: 6800),
+        FaturamentoMensal(mes: "Junho",     valor: 5900)
+    ]
+    
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            // Exemplo 1
+            Chart(dados) { item in
+                BarMark(
+                    x: .value("Mês", item.mes),
+                    y: .value("Faturamento", item.valor)
+                )
+                .foregroundStyle(.purple.gradient)
+                .cornerRadius(8)
+            }
+            
+            // Divisão
+            Divider()
+                .padding(.vertical)
+            
+            // Exemplo 2
+            Chart(dados) { item in
+                //PointMark(
+                LineMark(
+                    x: .value("Mês", item.mes),
+                    y: .value("Faturamento", item.valor)
+                )
+                .foregroundStyle(.black)
+            }
+            
+        }
+        .padding()
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}
+

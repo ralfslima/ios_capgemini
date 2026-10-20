@@ -1,0 +1,52 @@
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Variável de rotação
+    @State private var rotacao: Double = 0.0
+    
+    var body: some View {
+       
+        // VStack
+        VStack {
+            
+            // Exemplo 1
+            ProgressView()
+                .progressViewStyle(.circular)
+                .scaleEffect(2)
+            
+            // Divisão
+            Divider()
+                .padding(.vertical)
+            
+            // Exemplo 2
+            Circle()
+                //.foregroundStyle(.green)
+                .trim(from: 0.0, to: 0.8)
+                .stroke(
+                    LinearGradient(
+                        colors: [.blue, .purple],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    ),
+                    style: StrokeStyle(lineWidth: 5)
+                )
+                .frame(width: 100, height: 100)
+                .rotationEffect(.degrees(rotacao))
+            
+        }
+        .onAppear {
+            withAnimation(
+                .linear(duration: 2.0)
+                .repeatForever(autoreverses: false)
+            ) {
+                rotacao = 360.0
+            }
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}
