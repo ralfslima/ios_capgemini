@@ -1,0 +1,77 @@
+// ContentUnavailableView - A partir do iOS 17
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Lista de nomes
+    let nomes = ["Alice", "Bianca", "Carlos", "Jean", "Marcelo", "Paula", "Renata", "Yuri"]
+    
+    // Variável contendo o termo pesquisado
+    @State private var termo: String = ""
+    
+    // Propriedade computada
+    var filtrarNomes: [String] {
+        
+        //if termo == ""
+        if termo.isEmpty {
+            return nomes
+        } else {
+            return nomes.filter {$0.localizedCaseInsensitiveContains(termo)}
+        }
+        
+    }
+    
+    
+    // Body
+    var body: some View {
+        
+        // NavigationStack
+        NavigationStack {
+            
+            // Condicional
+            if filtrarNomes.isEmpty {
+                // ContentUnavailableView (caso não encontre registros)
+                ContentUnavailableView {
+                    Image(systemName: "person.fill.xmark")
+                        .font(.system(size: 100))
+                        .foregroundStyle(.blue)
+                        .padding(.bottom, 20)
+                    
+                    Text("Nenhuma pessoa encontrada!")
+                        .padding(.bottom, 20)
+                    
+                    Button(action: {termo = ""}) {
+                        Text("Refazer pesquisa")
+                            .frame(width: 200)
+                            .padding()
+                            .background(.blue)
+                            .foregroundStyle(.white)
+                            .cornerRadius(20)
+                    }
+                }
+            } else {
+                // List
+                List(filtrarNomes, id: \.self) { nome in
+                    
+                    // HStack
+                    HStack {
+                        Image(systemName: "person.circle.fill")
+                            .font(.title)
+                            .foregroundStyle(.blue)
+                        
+                        Text(nome)
+                    }
+                    
+                }
+                .navigationTitle("Contatos")
+                .searchable(text: $termo, prompt: "Pesquisar")
+            }
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

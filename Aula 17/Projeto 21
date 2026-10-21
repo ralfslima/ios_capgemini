@@ -1,0 +1,209 @@
+// Importar SwiftUI
+import SwiftUI
+
+// ContentView
+struct ContentView: View {
+    // Estados para controlar cada uma das 7 animações
+    @State private var animar1 = false
+    @State private var animar2 = false
+    @State private var animar3 = false
+    @State private var animar4 = false
+    @State private var animar5 = false
+    @State private var animar6 = false
+    @State private var arrasto7 = CGSize.zero
+
+    var body: some View {
+        NavigationStack {
+            List {
+                // SEÇÃO 1: ANIMAÇÃO IMPLÍCITA (.easeIn)
+                Section(header: Text("1. Animação Implícita")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Reage automaticamente a qualquer alteração de valor.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        HStack {
+                            Circle()
+                                .fill(animar1 ? .red : .blue)
+                                .frame(width: 50, height: 50)
+                                .offset(x: animar1 ? 200 : 0)
+                                .animation(.easeIn(duration: 0.5), value: animar1)
+                            Spacer()
+                        }
+                        
+                        Button("Executar Movimento") {
+                            animar1.toggle()
+                        }
+                        .buttonStyle(.bordered)
+                    }
+                    .padding(.vertical, 5)
+                }
+
+                // SEÇÃO 2: ANIMAÇÃO EXPLÍCITA (withAnimation)
+                Section(header: Text("2. Animação Explícita")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Modifica o estado explicitamente de forma animada.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Image(systemName: "arrow.clockwise")
+                            .font(.system(size: 40))
+                            .foregroundColor(.purple)
+                            .rotationEffect(.degrees(animar2 ? 360 : 0))
+                        
+                        Button("Rotacionar Ícone") {
+                            withAnimation(.linear(duration: 0.8)) {
+                                animar2.toggle()
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.purple)
+                    }
+                    .padding(.vertical, 5)
+                }
+
+                // SEÇÃO 3: ANIMAÇÃO DE MOLA (.spring)
+                Section(header: Text("3. Efeito Mola (Spring)")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Simula comportamento físico e rebote real.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(.pink)
+                            .frame(width: animar3 ? 140 : 100, height: 60)
+                            .animation(.spring(response: 0.4, dampingFraction: 0.4, blendDuration: 0), value: animar3)
+                        
+                        Button("Dar Pulso") {
+                            animar3.toggle()
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.pink)
+                    }
+                    .padding(.vertical, 5)
+                }
+
+                // SEÇÃO 4: ANIMAÇÃO CONTÍNUA E REPETITIVA
+                Section(header: Text("4. Repetição Contínua (.repeatForever)")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Útil para indicadores de carregamento ou alertas.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Circle()
+                            .stroke(Color.green, lineWidth: 4)
+                            .frame(width: 40, height: 40)
+                            .scaleEffect(animar4 ? 1.5 : 1.0)
+                            .opacity(animar4 ? 0.0 : 1.0)
+                            .onAppear {
+                                withAnimation(.easeOut(duration: 1.2).repeatForever(autoreverses: false)) {
+                                    animar4 = true
+                                }
+                            }
+                    }
+                    .padding(.vertical, 5)
+                }
+
+                // SEÇÃO 5: TRANSIÇÃO DE VISIBILIDADE (.transition)
+                Section(header: Text("5. Transição de Entrada/Saída")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Insere ou remove elementos da hierarquia de Views.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Button(animar5 ? "Esconder Mensagem" : "Mostrar Mensagem") {
+                            withAnimation(.easeInOut) {
+                                animar5.toggle()
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.orange)
+                        
+                        if animar5 {
+                            Text("🎉 Conteúdo revelado com sucesso!")
+                                .padding()
+                                .background(Color.orange.opacity(0.2))
+                                .cornerRadius(8)
+                                .transition(.scale.combined(with: .opacity))
+                        }
+                    }
+                    .padding(.vertical, 5)
+                }
+
+                // SEÇÃO 6: ROTAÇÃO 3D (Efeito Flip)
+                Section(header: Text("6. Efeito Flip 3D")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Gira componentes simulando profundidade sem espelhar o texto.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(animar6 ? Color.teal : Color.indigo)
+                                .frame(width: 150, height: 80)
+                                .overlay(
+                                    Group {
+                                        if animar6 {
+                                            Text("Verso")
+                                                .foregroundColor(.white)
+                                                .bold()
+                                                // Desfaz o espelhamento girando o texto em 180º também
+                                                .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
+                                        } else {
+                                            Text("Frente")
+                                                .foregroundColor(.white)
+                                                .bold()
+                                        }
+                                    }
+                                )
+                        }
+                        .rotation3DEffect(.degrees(animar6 ? 180 : 0), axis: (x: 0, y: 1, z: 0))
+                        
+                        Button("Girar Cartão") {
+                            withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
+                                animar6.toggle()
+                            }
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.indigo)
+                    }
+                    .padding(.vertical, 5)
+                }
+
+                // SEÇÃO 7: INTERAÇÃO DINÂMICA (Drag Gesture)
+                Section(header: Text("7. Inclinação por Arrasto (Tilt 3D)")) {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Arraste o quadrado abaixo para testar a rotação física.")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        RoundedRectangle(cornerRadius: 15)
+                            .fill(LinearGradient(colors: [.cyan, .blue], startPoint: .topLeading, endPoint: .bottomTrailing))
+                            .frame(width: 120, height: 120)
+                            .rotation3DEffect(.degrees(Double(arrasto7.width / 8)), axis: (x: 0, y: 1, z: 0))
+                            .rotation3DEffect(.degrees(Double(-arrasto7.height / 8)), axis: (x: 1, y: 0, z: 0))
+                            .gesture(
+                                DragGesture()
+                                    .onChanged { value in
+                                        arrasto7 = value.translation
+                                    }
+                                    .onEnded { _ in
+                                        withAnimation(.spring(response: 0.4, dampingFraction: 0.5)) {
+                                            arrasto7 = .zero
+                                        }
+                                    }
+                            )
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .padding()
+                    }
+                    .padding(.vertical, 5)
+                }
+            }
+            .navigationTitle("Catálogo de Animações")
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}   

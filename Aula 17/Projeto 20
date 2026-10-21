@@ -1,0 +1,130 @@
+// Importações
+import SwiftUI
+import Observation // iOS 17 ou superior
+
+// Classe de Perfil
+@Observable
+class Perfil {
+    
+    // Características
+    var nome: String = "Aline da Silva"
+    var seguidores: Int = 460
+    
+    // Função para incrementar os seguidores
+    func addSeguidores() {
+        seguidores += 1
+    }
+    
+}
+
+// ContentView
+struct ContentView: View {
+    
+    // Criar referência do tipo Perfil
+    @State private var perfil = Perfil()
+    
+    // Body
+    var body: some View {
+        
+        // Englobar estrutura
+        VStack {
+            
+            // Card
+            VStack(spacing: 10) {
+                Image(systemName: "figure.stand.dress")
+                    .font(.system(size: 80))
+                    .foregroundStyle(.purple)
+                
+                Text(perfil.nome)
+                    .font(.title)
+                
+                Text("Seguidores: \(perfil.seguidores)")
+                    .bold()
+                    .foregroundStyle(.gray)
+            }
+            .frame(width: 300, height: 200)
+            .padding()
+            .glassEffect(.regular, in: .rect(cornerRadius: 20))
+            
+            // Botão para add
+            Button(action: {
+                perfil.addSeguidores()
+            }) {
+                Label("Adicionar", systemImage: "plus.circle.fill")
+            }
+            .padding(.top, 30)
+            
+        }
+        
+    }
+}
+
+// Preview
+#Preview {
+    ContentView()
+}
+
+
+
+// Estrutura funcional para versões inferiores do iOS 17.
+//import SwiftUI
+//import Combine // Importado automaticamente com o SwiftUI, mas bom destacar
+//
+//// Classe de Perfil utilizando Combine (ObservableObject)
+//class Perfil: ObservableObject {
+//    
+//    // Características - @Published funciona como o Publisher aqui
+//    @Published var nome: String = "Aline da Silva"
+//    @Published var seguidores: Int = 460
+//    
+//    // Função para incrementar os seguidores
+//    func addSeguidores() {
+//        seguidores += 1
+//    }
+//}
+//
+//// ContentView
+//struct ContentView: View {
+//    
+//    // Criar referência utilizando @StateObject (ou @ObservedObject)
+//    @StateObject private var perfil = Perfil()
+//    
+//    // Body
+//    var body: some View {
+//        
+//        // Englobar estrutura
+//        VStack {
+//            
+//            // Card
+//            VStack(spacing: 10) {
+//                Image(systemName: "figure.stand.dress")
+//                    .font(.system(size: 80))
+//                    .foregroundStyle(.purple)
+//                
+//                Text(perfil.nome)
+//                    .font(.title)
+//                
+//                Text("Seguidores: \(perfil.seguidores)")
+//                    .bold()
+//                    .foregroundStyle(.gray)
+//            }
+//            .frame(width: 300, height: 200)
+//            .padding()
+//            // Nota: .glassEffect é nativo do visionOS/iOS 18+. Se der erro em versões antigas, substitua por .background(.ultraThinMaterial)
+//            .glassEffect(.regular, in: .rect(cornerRadius: 20))
+//            
+//            // Botão para add
+//            Button(action: {
+//                perfil.addSeguidores()
+//            }) {
+//                Label("Adicionar", systemImage: "plus.circle.fill")
+//            }
+//            .padding(.top, 30)
+//        }
+//    }
+//}
+//
+//// Preview
+//#Preview {
+//    ContentView()
+//}
