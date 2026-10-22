@@ -1,5 +1,3 @@
-md
-
 # Projeto Final SwiftUI — Controle de Notas dos Alunos
 
 ## 🎯 Objetivo
@@ -99,7 +97,7 @@ O desenvolvimento deverá respeitar as seguintes regras:
 **Importante:** os dados cadastrados não precisam ser mantidos após o encerramento do aplicativo.
 
 ## 7. Exemplo
-![imagem](https://github.com/ralfslima/ios_capgemini/tree/main/Aula%2018/imagem.png)
+![Imagem da Aula 18](https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2018/imagem.png)
 
 ## 9. Entrega
 
