@@ -1,0 +1,129 @@
+import SwiftUI
+
+// Estrutura Principal - Tela
+struct ContentView: View {
+    var body: some View {
+        
+        // ZStack
+        ZStack {
+            
+            // Definir background
+            LinearGradient(colors: [.blue, .purple, .black], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+            // VStack - Englobar a temperatura atual + próximas horas
+            VStack {
+                // Card contendo a temperatura e o clima atual
+                PrevisaoAtualView()
+                
+                // Previsões para as próximas horas
+                ProximasPrevisoesView()
+            }
+            
+        }
+        
+    }
+}
+
+// Estrutura de componente/tela reutilizável - CARD PRINCIPAL
+struct PrevisaoAtualView: View {
+    var body: some View {
+        VStack(spacing: 25) {
+            Image(systemName: "cloud")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 150)
+                .foregroundStyle(.white)
+                .padding(.top, 40)
+            
+            Text("26º")
+                .font(.largeTitle)
+                .foregroundStyle(.white)
+                .bold()
+            
+            HStack {
+                Label("Máximo: 28º", systemImage: "arrow.up")
+                    .foregroundStyle(.white)
+                
+                Label("Máximo: 17º", systemImage: "arrow.down")
+                    .foregroundStyle(.white)
+            }
+            .padding(.bottom, 40)
+            
+        }
+        .frame(maxWidth: .infinity)
+        .glassEffect(.clear, in: .rect(cornerRadius: 30))
+        .padding(.horizontal)
+    }
+}
+
+// Estrutura de componente/tela reutilizável - AGRUPAR PRÓXIMAS PREVISÕES
+struct ProximasPrevisoesView: View {
+    var body: some View {
+        VStack {
+            Text("Previsão para as próximas horas")
+                .font(.headline)
+                .foregroundStyle(.white)
+                .padding(.top, 30)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack {
+                    PrevisaoHoraView(hora: "19:00", icone: "moon", temperatura: "24º")
+                    
+                    PrevisaoHoraView(hora: "20:00", icone: "moon", temperatura: "23º")
+                    
+                    PrevisaoHoraView(hora: "21:00", icone: "moon", temperatura: "21º")
+                    
+                    PrevisaoHoraView(hora: "22:00", icone: "cloud.rain", temperatura: "19º")
+                    
+                    PrevisaoHoraView(hora: "23:00", icone: "cloud.rain", temperatura: "19º")
+                    
+                    PrevisaoHoraView(hora: "00:00", icone: "cloud.rain", temperatura: "18º")
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal)
+    }
+}
+
+
+// Estrutura de componente/tela reutilizável - PRÓXIMAS PREVISÕES
+struct PrevisaoHoraView: View {
+    
+    // Características
+    let hora: String
+    let icone: String
+    let temperatura: String
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack(spacing: 10) {
+            Image(systemName: icone)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 25)
+                .foregroundStyle(.white)
+            
+            Text(temperatura)
+                .foregroundStyle(.white)
+                .font(.caption)
+                .bold()
+            
+            Text(hora)
+                .foregroundStyle(.white)
+                .font(.caption2)
+        }
+        .frame(width: 80)
+        .padding()
+        .glassEffect(.clear, in: .rect(cornerRadius: 30))
+        
+    }
+    
+}
+
+#Preview {
+    ContentView()
+}
