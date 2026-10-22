@@ -97,7 +97,7 @@ O desenvolvimento deverá respeitar as seguintes regras:
 **Importante:** os dados cadastrados não precisam ser mantidos após o encerramento do aplicativo.
 
 ## 7. Exemplo
-![Imagem da Aula 18](https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2018/imagem.png)
+<img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2018/imagem.png" alt="Imagem da Aula 18" width="400">
 
 ## 9. Entrega
 
