@@ -99,7 +99,7 @@ O desenvolvimento deverá respeitar as seguintes regras:
 ## 7. Exemplo
 <img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2018/imagem.png" alt="Imagem da Aula 18" width="400">
 
-## 9. Entrega
+## 8. Entrega
 
 Disponibilizar no repositório do GitHub até dia 03/11 (terça-feira) às 10h.
 
