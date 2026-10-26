@@ -1,0 +1,84 @@
+import SwiftUI
+
+// Modelo de cartão
+struct Cartao: Identifiable {
+    let id = UUID()
+    let instituicao: String
+    let bandeira: String
+    let cor: Color
+    let ultimosDigitos: String
+    let limite: String
+    let fatura: String
+}
+
+// Miniatura de cartão
+struct MiniaturaCartãoView: View {
+    // Constante
+    let cartao: Cartao
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack {
+            
+            ZStack {
+                Rectangle()
+                    .fill(cartao.cor)
+                
+                Text(cartao.instituicao)
+                    .font(.title3)
+                    .foregroundStyle(.white)
+            }
+            
+        }
+        
+    }
+}
+
+// Estrutura principal
+struct ContentView: View {
+    // Constante contendo uma lista de cartões
+    let cartoes = [
+        Cartao(instituicao: "Bradesco", bandeira: "Visa", cor: .red, ultimosDigitos: "5543", limite: "R$ 12.000,00", fatura: "R$ 5.476,97"),
+        
+        Cartao(instituicao: "Santander", bandeira: "Mastercard", cor: .gray, ultimosDigitos: "3387", limite: "R$ 22.000,00", fatura: "R$ 13.771,34"),
+        
+        Cartao(instituicao: "C6 Bank", bandeira: "Mastercard", cor: .black, ultimosDigitos: "6546", limite: "R$ 30.000,00", fatura: "R$ 8.162,12"),
+        
+        Cartao(instituicao: "Nubank", bandeira: "Mastercard", cor: .purple, ultimosDigitos: "3387", limite: "R$ 5.000,00", fatura: "R$ 2.120,08"),
+        
+        Cartao(instituicao: "Itaú", bandeira: "Visa", cor: .orange, ultimosDigitos: "7769", limite: "R$ 9.000,00", fatura: "R$ 3.221,54"),
+        
+        Cartao(instituicao: "Caixa", bandeira: "Elo", cor: .blue, ultimosDigitos: "6768", limite: "R$ 14.500,00", fatura: "R$ 3.788,95")
+    ]
+    
+    // Variável informando sobre a visibilidade da folha (sheet)
+    @State private var cartaoSelecionado: Cartao? = nil
+    
+    // Colunas
+    let colunas = [
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15)
+    ]
+    
+    // Body
+    var body: some View {
+        // Grid
+        LazyVGrid(columns: colunas) {
+            
+            // Laço de repetição
+            ForEach(cartoes) { cartao in
+                MiniaturaCartãoView(cartao: cartao)
+            }
+            
+        }
+        .padding()
+        
+    }
+    
+}
+
+#Preview {
+    ContentView()
+}
