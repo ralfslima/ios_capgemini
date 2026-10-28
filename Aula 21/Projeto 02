@@ -1,0 +1,112 @@
+import SwiftUI
+
+// Modelo de Ícone
+struct Icone: Identifiable, Hashable {
+    let id = UUID()
+    let nome: String
+    let imagem: String
+    let detalhes: String
+}
+
+// Card Ícone
+struct CardIconeView: View {
+    
+    // Constante para obter um objeto do tipo Icone
+    let icone: Icone
+    
+    // Body
+    var body: some View {
+        
+        VStack {
+            Image(systemName: icone.imagem)
+                .font(.system(size: 80))
+                .foregroundStyle(.blue)
+        }
+        .frame(maxWidth: .infinity, minHeight: 100)
+        .padding()
+        .glassEffect(.regular, in: .rect(cornerRadius: 10))
+        
+    }
+    
+}
+
+// Estrutura contendo detalhes sobre um determinado ícone
+struct IconeDetalheView: View {
+    
+    // Constante para obter um objeto do tipo Icone
+    let icone: Icone
+    
+    // Body
+    var body: some View {
+        
+        VStack(spacing: 20) {
+            Image(systemName: icone.imagem)
+                .font(.system(size: 80))
+                .foregroundStyle(.blue)
+            
+            Text("Nome: \(icone.nome)")
+            
+            Text("Detalhes: \(icone.detalhes)")
+        }
+        .padding()
+        
+    }
+    
+}
+
+// Estrutura Principal
+struct ContentView: View {
+    // Constante de lista contendo quatro ícones
+    let icones = [
+        Icone(nome: "Configuração", imagem: "gearshape.fill", detalhes: "Ícone de configurações do sistema."),
+        
+        Icone(nome: "Perfil", imagem: "person.fill", detalhes: "Ícone para acessar o perfil do usuário."),
+        
+        Icone(nome: "Notificação", imagem: "bell.fill", detalhes: "Ícone responsável pelas notificações do aplicativo."),
+        
+        Icone(nome: "Contato", imagem: "mail.fill", detalhes: "Ícone para entrar em contato com a equipe de suporte.")
+    ]
+    
+    // Configuração das colunas
+    let colunas = [
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15)
+    ]
+    
+    // Body
+    var body: some View {
+        
+        // NavigationStack
+        NavigationStack {
+            
+            // Grid
+            LazyVGrid(columns: colunas) {
+                
+                // Laço de repetição
+                ForEach(icones) { i in
+                    
+                    // Link de Navegação
+                    NavigationLink(value: i) {
+                       
+                        // Card de ícone
+                        CardIconeView(icone: i)
+                        
+                    }
+                    
+                }
+                
+            }
+            .padding()
+            .navigationTitle("Painel")
+            .navigationDestination(for: Icone.self) {
+                objIcone in IconeDetalheView(icone: objIcone)
+            }
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

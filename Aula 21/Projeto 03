@@ -1,0 +1,169 @@
+import SwiftUI
+
+// Modelo de cartão
+struct Cartao: Identifiable {
+    let id = UUID()
+    let instituicao: String
+    let bandeira: String
+    let cor: Color
+    let ultimosDigitos: String
+    let limite: String
+    let fatura: String
+}
+
+// Detalhe do cartão
+struct DetalheCartaoView: View {
+    
+    // Constante
+    let cartao: Cartao
+    
+    // Variável do sistema
+    @Environment(\.dismiss) var dismiss
+    
+    // Body
+    var body: some View {
+        
+        // NavigationStack
+        NavigationStack {
+            
+            // VStack (Engloba a folha)
+            VStack {
+                
+                // VStack (Engloba cada informação do cartão que será exibida)
+                VStack {
+                    
+                    // HStack
+                    HStack {
+                        
+                        VStack {
+                            Text(cartao.instituicao)
+                                .font(.title2)
+                            
+                            Text(cartao.bandeira)
+                                .font(.title3)
+                        }
+                        
+                        Spacer()
+                        
+                        Text("**** **** **** \(cartao.ultimosDigitos)")
+                            .font(.default)
+                    }
+                    .frame(maxWidth: .infinity, minHeight: 200)
+                    .foregroundStyle(.white)
+                    .background(RoundedRectangle(cornerRadius: 10).fill(cartao.cor))
+                    .padding()
+                    
+                }
+                
+                // Exibir o total da fatura
+                VStack {
+                    Text("Total da fatura \(cartao.fatura)")
+                }
+                .frame(maxWidth: .infinity, minHeight: 60)
+                .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.6)))
+                .padding()
+                
+                // Limite do cartão
+                VStack {
+                    Text("Limite do cartão \(cartao.limite)")
+                }
+                .frame(maxWidth: .infinity, minHeight: 60)
+                .background(RoundedRectangle(cornerRadius: 10).fill(.gray.opacity(0.6)))
+                .padding()
+                
+                // Espaçamento para empurrar para cima
+                Spacer()
+                
+            }
+            
+        }
+        .presentationDetents([.medium, .large]) // <- Área da folha (sheet)
+        .presentationDragIndicator(.visible) // <- Força a exibição para aumentar ou diminuir a folha (sheet)
+        
+    }
+    
+}
+
+// Miniatura de cartão
+struct MiniaturaCartaoView: View {
+    
+    // Constante
+    let cartao: Cartao
+    
+    // Body
+    var body: some View {
+        
+        // VStack
+        VStack {
+            Text(cartao.instituicao)
+                .font(.title2)
+            
+            Text(cartao.bandeira)
+                .font(.caption)
+            
+            Spacer()
+            
+            Text("**** \(cartao.ultimosDigitos)")
+                .font(.caption)
+            
+        }
+        .padding()
+        .frame(maxWidth: .infinity, minHeight: 120)
+        .foregroundStyle(.white)
+        .background(RoundedRectangle(cornerRadius: 10).fill(cartao.cor))
+        
+        
+    }
+}
+
+// Estrutura principal
+struct ContentView: View {
+    // Constante contendo uma lista de cartões
+    let cartoes = [
+        Cartao(instituicao: "Bradesco", bandeira: "Visa", cor: .red, ultimosDigitos: "5543", limite: "R$ 12.000,00", fatura: "R$ 5.476,97"),
+        
+        Cartao(instituicao: "Santander", bandeira: "Mastercard", cor: .gray, ultimosDigitos: "3387", limite: "R$ 22.000,00", fatura: "R$ 13.771,34"),
+        
+        Cartao(instituicao: "C6 Bank", bandeira: "Mastercard", cor: .black, ultimosDigitos: "6546", limite: "R$ 30.000,00", fatura: "R$ 8.162,12"),
+        
+        Cartao(instituicao: "Nubank", bandeira: "Mastercard", cor: .purple, ultimosDigitos: "3387", limite: "R$ 5.000,00", fatura: "R$ 2.120,08"),
+        
+        Cartao(instituicao: "Itaú", bandeira: "Visa", cor: .orange, ultimosDigitos: "7769", limite: "R$ 9.000,00", fatura: "R$ 3.221,54"),
+        
+        Cartao(instituicao: "Caixa", bandeira: "Elo", cor: .blue, ultimosDigitos: "6768", limite: "R$ 14.500,00", fatura: "R$ 3.788,95")
+    ]
+    
+    // Variável informando sobre a visibilidade da folha (sheet)
+    @State private var cartaoSelecionado: Cartao? = nil
+    
+    // Colunas
+    let colunas = [
+        GridItem(.flexible(), spacing: 15),
+        GridItem(.flexible(), spacing: 15)
+    ]
+    
+    // Body
+    var body: some View {
+        // Grid
+        LazyVGrid(columns: colunas) {
+            
+            // Laço de repetição
+            ForEach(cartoes) { cartao in
+                Button(action: { cartaoSelecionado = cartao }) {
+                    MiniaturaCartaoView(cartao: cartao)
+                }
+            }
+            .sheet(item: $cartaoSelecionado) {
+                cartao in DetalheCartaoView(cartao: cartao)
+            }
+            
+        }
+        .padding()
+        
+    }
+    
+}
+
+#Preview {
+    ContentView()
+}

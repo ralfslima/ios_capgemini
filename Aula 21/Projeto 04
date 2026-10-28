@@ -1,0 +1,61 @@
+import SwiftUI
+
+// Modelo de opção para o menu
+struct ItemMenu: Identifiable, Hashable {
+    let id = UUID()
+    let nome: String
+    let icone: String
+}
+
+// ContentView
+struct ContentView: View {
+    
+    // Lista contendo as opções do menu
+    let opcoes = [
+        ItemMenu(nome: "Perfil", icone: "person.fill"),
+        ItemMenu(nome: "Segurança", icone: "lock.fill"),
+        ItemMenu(nome: "Configurações", icone: "gearshape.fill")
+    ]
+    
+    // Variável de estado para saber em qual item o usuário quer acessar
+    @State private var opcaoSelecionada: ItemMenu?
+    
+    // Body
+    var body: some View {
+        
+        // NavigationSplitView
+        NavigationSplitView {
+            
+            // Opções do menu
+            List(opcoes, selection: $opcaoSelecionada) {
+                item in
+                NavigationLink(value: item) {
+                    Label(item.nome, systemImage: item.icone)
+                }
+            }
+            
+        }detail: {
+            
+            // Obter a opção selecionada (Perfil, Segurança ou Configurações)
+            if let opcao = opcaoSelecionada {
+                
+                VStack {
+                    Image(systemName: opcao.icone)
+                        .font(.system(size: 100))
+                        .foregroundStyle(.blue)
+                    
+                    Text(opcao.nome)
+                        .font(.largeTitle)
+                        .foregroundStyle(.blue)
+                }
+                
+            }
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}
