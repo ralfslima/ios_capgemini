@@ -1,0 +1,56 @@
+import SwiftUI
+
+struct ContentView: View {
+    
+    // Variável de visibilidade
+    @State private var tela: String? = nil
+    
+    // Body
+    var body: some View {
+        
+        // NavigationStack
+        NavigationStack {
+            
+            // VStack
+            VStack {
+                
+                // Condicional
+                if tela == "ativa" {
+                    Image(systemName: "eye")
+                        .font(.largeTitle)
+                    
+                    Text("Tela ativa!")
+                        .font(.largeTitle)
+                } else {
+                    Image(systemName: "eye.slash")
+                        .font(.largeTitle)
+                    
+                    Text("Tela inativa!")
+                        .font(.largeTitle)
+                }
+                
+            }
+            .navigationTitle("Componente Menu")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Menu {
+                        Button(action: {tela = "ativa"}) {
+                            Label("Tela Ativa", systemImage: "eye")
+                        }
+                        Button(action: {tela = "inativa"}) {
+                            Label("Tela Inativa", systemImage: "eye.slash")
+                        }
+                    } label: {
+                        Image(systemName: "gear")
+                    }
+                }
+            }
+            
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

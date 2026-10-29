@@ -1,0 +1,53 @@
+import SwiftUI
+
+// Tela de Login
+struct TelaLoginView: View {
+    
+    // Variável lógica para abrir/fechar a tela de login
+    @Binding var telaLogin2: Bool
+    
+    // Body
+    var body: some View {
+        VStack {
+            Image(systemName: "lock.fill")
+                .font(.largeTitle)
+                .padding()
+            
+            Text("Tela de Login!")
+                .font(.largeTitle)
+                .padding()
+            
+            Button(action: { telaLogin2 = false }) {
+                Text("Fechar")
+            }
+        }
+    }
+}
+
+// Tela Principal
+struct ContentView: View {
+    
+    // Variável lógica para abrir/fechar a tela de login
+    @State private var telaLogin1: Bool = false
+    
+    // Body
+    var body: some View {
+        
+        VStack {
+            Button(action: { telaLogin1 = true }) {
+                Text("Abrir tela de login")
+            }
+            .buttonStyle(.bordered)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.yellow)
+        .fullScreenCover(isPresented: $telaLogin1) {
+            TelaLoginView(telaLogin2: $telaLogin1)
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}

@@ -1,0 +1,182 @@
+// Importação
+import SwiftUI
+
+// Modelo de Curso
+struct Curso: Identifiable {
+    let id = UUID()
+    let titulo: String
+    let categoria: String
+    let duracao: Int
+    let descricao: String
+}
+
+// Tela Principal
+struct ContentView: View {
+    // Lista de cursos
+    let cursos = [
+        Curso(
+            titulo: "Swift para Iniciantes",
+            categoria: "Backend",
+            duracao: 10,
+            descricao: "Treinamento básico sobre a linguagem Swift."
+        ),
+        
+        Curso(
+            titulo: "SwiftUI",
+            categoria: "Backend",
+            duracao: 20,
+            descricao: "Treinamento focado na apresentação dos componentes do framework SwiftUI."
+        ),
+        
+        Curso(
+            titulo: "HTML",
+            categoria: "Frontend",
+            duracao: 20,
+            descricao: "Treinamento da linguagem de marcação HTML. Com essa linguagem, será possível desenvolver sites."
+        ),
+        
+        Curso(
+            titulo: "CSS",
+            categoria: "Frontend",
+            duracao: 30,
+            descricao: "Treinamento ensinando a estilizar páginas web com CSS."
+        ),
+    ]
+    
+    // Body
+    var body: some View {
+        
+        // NavigationStack
+        NavigationStack {
+            
+            // List
+            List(cursos) { curso in
+                
+                // NavigationLink
+                NavigationLink {
+                    DetalhesView(curso: curso)
+                } label: {
+                    BotaoNavegacaoView(curso: curso)
+                }
+                
+            }
+            .navigationTitle("Lista de cursos")
+            
+        }
+        
+    }
+}
+
+// Estrutura do botão de navegação
+struct BotaoNavegacaoView: View {
+    
+    // Constante de curso
+    let curso: Curso
+    
+    // Body
+    var body: some View {
+        
+        HStack {
+            Image(systemName: "book.pages")
+                .font(.system(size: 40))
+                .foregroundStyle(.blue)
+            
+            VStack(alignment: .leading) {
+                Text(curso.titulo)
+                    .bold()
+                
+                Text(curso.categoria)
+                    .font(.caption)
+            }
+        }
+        
+    }
+    
+}
+
+// Estrutura de tela sobre os cursos
+struct DetalhesView: View {
+    
+    // Constante de curso
+    let curso: Curso
+    
+    // Body
+    var body: some View {
+        
+        VStack(alignment: .leading, spacing: 20) {
+            Image(systemName: "book.pages")
+                .font(.system(size: 70))
+                .foregroundStyle(.blue)
+            
+            Text(curso.titulo)
+                .font(.largeTitle)
+            
+            Label(curso.categoria, systemImage: "tag")
+            
+            Label("\(curso.duracao) horas", systemImage: "clock")
+            
+            Label(curso.descricao, systemImage: "text.page")
+            
+            NavigationLink {
+                ConfirmarCursoView(curso: curso)
+            } label: {
+                Text("Confirmar")
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    //.cornerRadius() <- Depreciado
+            }
+            
+            Spacer()
+        }
+        .padding()
+        
+    }
+    
+}
+
+// Tela para confirmar o interesse pelo treinamento/curso
+struct ConfirmarCursoView: View {
+    
+    // Constante de curso
+    let curso: Curso
+    
+    // Body
+    var body: some View {
+        
+        VStack {
+            
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 80))
+                .foregroundStyle(.green)
+                .padding()
+            
+            Text("Parabéns! Você está inscrito no curso de \(curso.titulo).")
+                .font(.title3)
+            
+            NavigationLink {
+                ContentView()
+            } label: {
+                Text("Lista de cursos")
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(.blue)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    //.cornerRadius() <- Depreciado
+            }
+            
+            Spacer()
+            
+        }
+        .padding()
+        
+    }
+    
+}
+
+#Preview {
+    ContentView()
+}

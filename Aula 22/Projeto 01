@@ -1,0 +1,56 @@
+import SwiftUI
+
+// Estrutura Tela 1
+struct Tela1View: View {
+    var body: some View {
+        // VStack
+        VStack {
+            Text("Tela 1")
+                .font(.largeTitle)
+            
+            NavigationLink(destination: Tela2View()) {
+                Text("Acessar segunda tela")
+                    .padding()
+                    .background(.blue)
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
+            }
+            
+        }
+    }
+}
+
+// Estrutura Tela 2
+struct Tela2View: View {
+    var body: some View {
+        // VStack
+        VStack {
+            Text("Tela 2")
+                .font(.largeTitle)
+            
+            NavigationLink(destination: Tela1View()) {
+                Text("Acessar primeira tela")
+                    .padding()
+                    .background(.orange)
+                    .foregroundStyle(.white)
+                    .cornerRadius(10)
+            }
+        }
+    }
+}
+
+// Estrutura Principal
+struct ContentView: View {
+    var body: some View {
+        
+        // NavigationStack
+        NavigationStack {
+            Tela1View()
+        }
+        
+    }
+}
+
+#Preview {
+    ContentView()
+}
