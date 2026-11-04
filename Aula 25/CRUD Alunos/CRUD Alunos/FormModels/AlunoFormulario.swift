@@ -1,0 +1,58 @@
+// Importar Foundation para usar o UUID
+import Foundation
+
+// Struct
+struct AlunoFormulario {
+    // Características
+    var id: UUID? = nil
+    var nome: String = ""
+    var nota1: String = ""
+    var nota2: String = ""
+    
+    // Limpar os conteúdos do formulário
+    mutating func limpar() {
+        id    = nil
+        nome  = ""
+        nota1 = ""
+        nota2 = ""
+    }
+    
+    // Converter os dados do formulário para um objeto do tipo Aluno
+    func converter() -> Aluno? {
+        
+        // Formatação
+        let textoNome  = nome.trimmingCharacters(in: .whitespaces)
+        let textoNota1 = nota1.replacingOccurrences(of: ",", with: ".")
+        let textoNota2 = nota2.replacingOccurrences(of: ",", with: ".")
+
+        // Verificação
+        guard
+            !textoNome.isEmpty,
+            let n1 = Double(textoNota1),
+            let n2 = Double(textoNota2),
+            (0...10).contains(n1),
+            (0...10).contains(n2)
+        else {
+            return nil
+        }
+        
+        // Retornar um objeto do tipo Aluno
+        if let idExistente = id {
+            return Aluno(id: idExistente, nome: textoNome, nota1: n1, nota2: n2)
+        } else {
+            return Aluno(nome: textoNome, nota1: n1, nota2: n2)
+        }
+        
+    }
+    
+    // Preencher formulário
+    static func preencher(aluno: Aluno) -> AlunoFormulario {
+        AlunoFormulario(
+            id: aluno.id,
+            nome: aluno.nome,
+            nota1: String(aluno.nota1),
+            nota2: String(aluno.nota2)
+        )
+    }
+    
+}
