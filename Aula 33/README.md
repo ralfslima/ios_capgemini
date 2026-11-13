@@ -44,5 +44,5 @@ Caso queira ir além do escopo básico, você pode implementar:
 
 ---
 
-## 📅 Prazo e Forma de Entrega
+## 📅 Prazo de Entrega
 * **Data Limite:** **30/11 às 10h00**
