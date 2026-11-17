@@ -115,7 +115,7 @@ O projeto deverá ser entregue em um repositório Git (GitHub), contendo:
 O objetivo desta atividade é colocar em prática os conhecimentos de desenvolvimento iOS com SwiftUI, consumo de APIs, organização arquitetural com MVVM e, como diferencial, persistência de dados com SwiftData.
 
 Capriche na organização do código e na experiência do usuário!
-```
+
 
 <img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2035/img1.png" width="600">
 <img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2035/img2.png" width="600">
