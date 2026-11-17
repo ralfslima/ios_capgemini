@@ -117,8 +117,6 @@ O objetivo desta atividade é colocar em prática os conhecimentos de desenvolvi
 Capriche na organização do código e na experiência do usuário!
 ```
 
-![Imagem 1](https://github.com/ralfslima/ios_capgemini/tree/main/Aula%2035/img1.png)
-
-![Imagem 2](https://github.com/ralfslima/ios_capgemini/tree/main/Aula%2035/img2.png)
-
-![Imagem 3](https://github.com/ralfslima/ios_capgemini/tree/main/Aula%2035/img3.png)
+<img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2035/img1.png" width="600">
+<img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2035/img2.png" width="600">
+<img src="https://raw.githubusercontent.com/ralfslima/ios_capgemini/main/Aula%2035/img3.png" width="600">
