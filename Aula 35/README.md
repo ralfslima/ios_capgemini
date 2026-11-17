@@ -60,31 +60,6 @@ O desenvolvimento deverá seguir os seguintes requisitos:
 - **Consulta de CEP:** integração com uma API de consulta de CEP, como a [ViaCEP](https://viacep.com.br/).
 - **Organização:** separar as responsabilidades entre Model, View e ViewModel.
 
-### Sugestão de organização do projeto
-
-```text
-AddressApp/
-│
-├── Models/
-│   └── Address.swift
-│
-├── Views/
-│   ├── AddressFormView.swift
-│   ├── AddressListView.swift
-│   └── Components/
-│
-├── ViewModels/
-│   ├── AddressFormViewModel.swift
-│   └── AddressListViewModel.swift
-│
-├── Services/
-│   └── ViaCEPService.swift
-│
-└── AddressApp.swift
-```
-
-A estrutura acima é apenas uma sugestão. O desenvolvedor poderá propor outra organização, desde que respeite os princípios do padrão MVVM.
-
 ## ⭐ Desafio extra: Persistência de dados
 
 Como desafio adicional, implemente uma camada de persistência utilizando **SwiftData**.
