@@ -81,10 +81,6 @@ O projeto deverá ser entregue em um repositório Git (GitHub), contendo:
 - Arquivo README.md com as informações do projeto.
 - Instruções básicas para executar a aplicação.
 
-### 📅 Prazo final de entrega
-
-**30/11/2026, até às 10h (horário de Brasília).**
-
 ## 🚀 Boa sorte!
 
 O objetivo desta atividade é colocar em prática os conhecimentos de desenvolvimento iOS com SwiftUI, consumo de APIs, organização arquitetural com MVVM e, como diferencial, persistência de dados com SwiftData.
