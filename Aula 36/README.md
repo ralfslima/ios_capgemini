@@ -24,26 +24,4 @@ A partir dos dados obtidos da API (ou em conjunto com eles), a aplicação deve 
 * **Remoção (Exclusão):** Permitir ao usuário remover itens previamente cadastrados/salvos.
 * **Camada de Armazenamento:** Os dados manipulados devem ser mantidos utilizando:
   * Uma **lista/array em memória** durante a execução do programa; **OU**
-  * Uma **camada de persistência** (ex.: `LocalStorage`, arquivo JSON/CSV, SQLite, banco de dados relacional ou NoSQL).
-
----
-
-## 🛠️ Requisitos Técnicos
-* O código deve estar organizado, legível e devidamente indentado.
-* Tratamento básico de erros para falhas na requisição HTTP (ex.: exibição de mensagem amigável caso a API esteja indisponível ou retorne erro).
-* O projeto pode ser desenvolvido em qualquer linguagem ou stack definida na disciplina (Web, Mobile, Desktop ou Console).
-
----
-
-## 📦 Forma de Entrega
-
----
-
-## 📊 Critérios de Avaliação
-
-| Critério | Descrição | Peso |
-| :--- | :--- | :---: |
-| **Consumo da API** | Requisição funcionando corretamente e tratamento adequado do retorno (JSON). | 30% |
-| **Listagem de Dados** | Exibição clara e estruturada dos dados obtidos da API. | 20% |
-| **Cadastro e Remoção** | Funcionamento correto das operações de inserção e exclusão na lista/persistência. | 30% |
-| **Organização e Documentação** | Clareza do código, boas práticas e instruções no `README.md`. | 20% |
+  * Uma **camada de persistência** (ex.: arquivo JSON/CSV, SQLite, banco de dados relacional ou NoSQL).
