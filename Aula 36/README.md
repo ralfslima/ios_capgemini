@@ -1,6 +1,6 @@
 # 📌 Trabalho Prático: Consumo de API
 
-**📅 Data de Entrega:** 30/11/2026  
+**📅 Data de Entrega:** 30/11/2026 às 10h.
 
 ---
 
