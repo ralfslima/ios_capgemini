@@ -23,5 +23,5 @@ A partir dos dados obtidos da API (ou em conjunto com eles), a aplicação deve 
 * **Cadastro (Inserção):** Permitir ao usuário adicionar/salvar novos itens ou favoritar itens vindos da API.
 * **Remoção (Exclusão):** Permitir ao usuário remover itens previamente cadastrados/salvos.
 * **Camada de Armazenamento:** Os dados manipulados devem ser mantidos utilizando:
-  * Uma **lista/array em memória** durante a execução do programa; **OU**
+  * Uma **lista/array em memória** durante a execução do programa;
   * Uma **camada de persistência** (ex.: arquivo JSON/CSV, SQLite, banco de dados relacional ou NoSQL).
