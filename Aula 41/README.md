@@ -4,7 +4,7 @@ Guia prático de referência para desenvolvimento em **SwiftUI** utilizando o **
 
 ---
 
-## ✅ Funcionalidades que Funcionam no Simulador (iPhone 18 Pro)
+## ✅ Recursos que funcionam no simulador (iPhone 18 Pro)
 
 O Simulador do Xcode emula grande parte das APIs de software e privacidade do iOS, permitindo validar fluxos completos sem um dispositivo físico.
 
@@ -22,7 +22,7 @@ O Simulador do Xcode emula grande parte das APIs de software e privacidade do iO
 
 ---
 
-## ❌ Funcionalidades que Exigem um iPhone Físico
+## ❌ Recursos que exigem um iPhone físico
 
 Recursos que dependem diretamente de sensores físicos, chips de rádio frequência ou hardware dedicado não são emulados no Mac e exigem um dispositivo real conectado.
 
